@@ -20,9 +20,8 @@ for serialized_example in tf.python_io.tf_record_iterator("tfrecords_path"):
 
 def read_and_decode(fileanme):
     """
-
     :param fileanme:
-    :return: 返回img和标签
+    :return: 返回样本和标签
     """
     # 根据文件名生成一个队列
     fileanme_queue = tf.train.string_input_producer([fileanme])
@@ -43,6 +42,6 @@ def read_and_decode(fileanme):
     return (img, label)
 
 # 使用shuffle_batch随机打乱顺序
-img_batch, label_batch = tf.train.shuffle_batch([img, label],
-                                                batch_size=30, capacity=2000,
-                                                min_after_dequeue=1000)
+# img_batch, label_batch = tf.train.shuffle_batch([img, label],
+#                                                 batch_size=30, capacity=2000,
+#                                                 min_after_dequeue=1000)
